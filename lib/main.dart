@@ -194,7 +194,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blueGrey[900],
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -210,17 +210,18 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       Text(
                         inputValue,
-                        style: const TextStyle(color: Colors.white, fontSize: 36),
+                        style: const TextStyle(color: Colors.white, fontSize: 55),
                       ),
                       const SizedBox(height: 10),
                       Text(
                         result,
-                        style: const TextStyle(color: Colors.grey, fontSize: 28),
+                        style: const TextStyle(color:Colors.grey, fontSize:36),
                       ),
                     ],
                   ),
                 ),
               ),
+              Divider(thickness: 2,indent: 15,endIndent: 15,color: Colors.grey[700],),
 
               // Toggle arrow
               GestureDetector(
@@ -237,12 +238,13 @@ class _MyAppState extends State<MyApp> {
                   size: 35,
                 ),
               ),
+              
 
               // Scientific drawer (slides down)
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 height: showScientific ? 100 : 0,
-                color: Colors.grey[900],
+                color: Colors.grey[800],
                 child: showScientific
                     ? SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -265,8 +267,8 @@ class _MyAppState extends State<MyApp> {
 
               const SizedBox(height: 10),
               buttonRow(["C", "%", "⌫", "÷"], size),
-              buttonRow(["7", "8", "9", "×"], size),
-              buttonRow(["4", "5", "6", "−"], size),
+              buttonRow(["7", "8", "9", "*"], size),
+              buttonRow(["4", "5", "6", "-"], size),
               buttonRow(["1", "2", "3", "+"], size),
               buttonRow(["00", "0", ".", "="], size),
               const SizedBox(height: 20),
@@ -293,12 +295,13 @@ class _MyAppState extends State<MyApp> {
         width: size,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.grey[850],
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.white)
         ),
         child: Text(
           text,
-          style: const TextStyle(color: Colors.white, fontSize: 26),
+          style: const TextStyle(color: Colors.white, fontSize: 30),
         ),
       ),
     );
@@ -348,9 +351,9 @@ class _MyAppState extends State<MyApp> {
   void calculate() {
     try {
       String finalInput = inputValue
-          .replaceAll('×', '*')
+          .replaceAll('*', '*')
           .replaceAll('÷', '/')
-          .replaceAll('−', '-')
+          .replaceAll('-', '-')
           .replaceAll('√', 'sqrt')
           .replaceAll('π', 'pi');
 
